@@ -25,3 +25,13 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.28.0.6. Set the 'ServerName' directive globally to suppress this message
 [Sun Apr 17 16:36:19.135956 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/8.0.10 configured -- resuming normal operations
 [Sun Apr 17 16:36:19.136005 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Mon Apr 18 00:38:18.686734 2022] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.28.0.4. Set the 'ServerName' directive globally to suppress this message
+[Mon Apr 18 13:40:52.424601 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/8.0.10 configured -- resuming normal operations
+[Mon Apr 18 13:40:52.424659 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Mon Apr 18 20:04:58.572166 2022] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.28.0.4. Set the 'ServerName' directive globally to suppress this message
+[Mon Apr 18 22:42:37.801937 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/8.0.10 configured -- resuming normal operations
+[Mon Apr 18 22:42:37.801974 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Mon Apr 18 23:03:36.864845 2022] [php:notice] [pid 24] [client 172.28.0.1:47466] 2022-04-18T23:03:36+00:00 [critical] Uncaught Exception: Invalid configuration for path "security.firewalls.api_login": The check_path "/api/auth" for login method "json_login" is not matched by the firewall pattern "^/api/login".
+[Mon Apr 18 23:05:10.196587 2022] [php:notice] [pid 18] [client 172.28.0.1:47470] 2022-04-18T23:05:10+00:00 [critical] Uncaught Exception: Invalid configuration for path "security.firewalls.api_login": The check_path "/api/auth" for login method "json_login" is not matched by the firewall pattern "^/api/login".
