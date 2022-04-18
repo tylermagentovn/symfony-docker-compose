@@ -5,3 +5,9 @@ controllers:
 kernel:
     resource: ../src/Kernel.php
     type: annotation
+api_login_check:
+    path: /api/login_check
+app.swagger_ui:
+    path: /admin/api_docs
+    methods: GET
+    defaults: { _controller: nelmio_api_doc.controller.swagger_ui }
