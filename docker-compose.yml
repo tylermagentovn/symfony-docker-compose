@@ -1,0 +1,64 @@
+version: "3"
+
+services:
+  webserver:
+    build: 
+      context: ./Docker/php
+    restart: 'always'
+    ports:
+      - "80:80"
+      - "443:443"
+    links: 
+      - database
+    volumes: 
+      - ./:/var/www/html
+      - ./Docker/php/php.ini:/usr/local/etc/php/php.ini
+      - ./Docker/vhost:/etc/apache2/sites-enabled
+      - ./Docker/log/apache2:/var/log/apache2
+    environment:
+      APACHE_DOCUMENT_ROOT: '/var/www/html'
+      PMA_PORT: 9090
+      MYSQL_ROOT_PASSWORD: 'root'
+  
+  database:
+    build:
+      context: "./Docker/mysql"
+    restart: 'always'
+    ports:
+      - "127.0.0.1:3306:3306"
+    volumes: 
+      - ./Docker/data/mysql:/var/lib/mysql
+      - ./Docker/log/mysql:/var/log/mysql
+      - ./Docker/my.cnf:/etc/my.cnf
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'symfony'
+      MYSQL_USER: 'symfony'
+      MYSQL_PASSWORD: 'symfony'
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    links:
+      - database
+    environment:
+      PMA_HOST: 'database'
+      PMA_PORT: '3306'
+      PMA_USER: 'root'
+      PMA_PASSWORD: 'root'
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_USER: 'symfony'
+      MYSQL_PASSWORD: 'symfony'
+      UPLOAD_LIMIT: '512M'
+      MEMORY_LIMIT: '512M'
+    ports:
+      - '9090:80'
+    volumes: 
+      - /sessions
+      - ./Docker/php/php.ini:/usr/local/etc/php/conf.d/php-phpmyadmin.ini
+  
+  mailcatcher:
+    image: schickling/mailcatcher
+    ports:
+      - "1080:1080"
+      - "1025:1025"
+
